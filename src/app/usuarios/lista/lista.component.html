@@ -1,8 +1,24 @@
-<div class="card-columns">
+<div class="alert alert-info text-center" role="alert" *ngIf="loading">
+    <h4 class="alert-heading">Cargando...</h4>
+    <p>
+        <i class="fa fa-sync fa-spin fa-3x"> </i>
+    </p>
+    <p class="mb-0"></p>
+</div>
+
+<div class="alert alert-danger text-center" role="alert" *ngIf="error">
+    <h4 class="alert-heading">Error</h4>
+    <pre>
+        {{error | json}}
+    </pre>
+    <p class="mb-0"></p>
+</div>
+
+<div class="card-columns" *ngIf="!loading">
     <div class="card" *ngFor="let item of usuarios">
         <img [src]="item.avatar" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">{{item.firstName}} {{item.lastName}}</h5>
+            <h5 class="card-title">{{item.first_name}} {{item.last_name}}</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text">
                 <span class="text-muted">ID: {{item.id}}</span>
